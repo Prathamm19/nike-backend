@@ -41,11 +41,20 @@ def get_product_metadata(product_id: str):
     """Fetch stored product data from Pinecone"""
     return index.fetch(ids=[product_id]).get('vectors', {}).get(product_id, {}).get('metadata', {})
 
+
+
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Nike backend is running ✅"}
+@app.api_route("/", methods=["GET", "HEAD"])
+async def root(request: Request):
+    # Optional: don't return full body on HEAD request
+    if request.method == "HEAD":
+        return JSONResponse(status_code=200)
+    return {"message": "Backend is running 🚀"}
+
 
 @app.post("/search")
 async def search(request: SearchRequest):
