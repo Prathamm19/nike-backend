@@ -51,7 +51,7 @@ def get_product_metadata(product_id: str):
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-app = FastAPI()
+
 
 @app.api_route("/", methods=["GET", "HEAD"])
 async def root(request: Request):
