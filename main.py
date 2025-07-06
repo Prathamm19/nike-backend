@@ -23,11 +23,16 @@ TOGETHER_ENDPOINT = "https://api.together.xyz/v1/completions"
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Or list specific domain: ["https://nike-search-git-main-prathamms-projects.vercel.app"]
+    allow_credentials=True,
     allow_methods=["*"],
+    allow_headers=["*"],
 )
+
 
 class SearchRequest(BaseModel):
     query: str
