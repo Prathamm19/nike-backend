@@ -6,6 +6,9 @@ import pinecone
 from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
 import requests  # For Together.ai API
+from fastapi import FastAPI
+
+
 
 load_dotenv()
 
@@ -37,6 +40,12 @@ class LLMRequest(BaseModel):
 def get_product_metadata(product_id: str):
     """Fetch stored product data from Pinecone"""
     return index.fetch(ids=[product_id]).get('vectors', {}).get(product_id, {}).get('metadata', {})
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Nike backend is running ✅"}
 
 @app.post("/search")
 async def search(request: SearchRequest):
