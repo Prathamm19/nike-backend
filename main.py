@@ -27,7 +27,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or list specific domain: ["https://nike-search-git-main-prathamms-projects.vercel.app"]
+    allow_origins=["https://nike-search-git-main-prathamms-projects.vercel.app/"],  # Or list specific domain: ["https://nike-search-git-main-prathamms-projects.vercel.app"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
