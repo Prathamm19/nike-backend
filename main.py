@@ -6,7 +6,7 @@ import pinecone
 from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
 import requests  # For Together.ai API
-from fastapi import FastAPI
+
 
 
 
@@ -23,11 +23,11 @@ TOGETHER_ENDPOINT = "https://api.together.xyz/v1/completions"
 
 app = FastAPI()
 
-from fastapi.middleware.cors import CORSMiddleware
+#from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://nike-search-git-main-prathamms-projects.vercel.app/"],  # Or list specific domain: ["https://nike-search-git-main-prathamms-projects.vercel.app"]
+    allow_origins=["https://nike-search-git-main-prathamms-projects.vercel.app"],  # Or list specific domain: ["https://nike-search-git-main-prathamms-projects.vercel.app"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
